@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="islam">
+        <item>I</item>
+        <item>S</item>
+        <item>L</item>
+        <item>A</item>
+        <item>M</item>
+    </string-array>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/City_Country"
+        android:icon="@drawable/clocksf"
+        android:title="Salah Timings" />
+    <item
+        android:id="@+id/qibladir"
+        android:icon="@drawable/qiblacompasssf"
+        android:title=" Qibla direction " />
+    <item
+        android:id="@+id/hadees"
+        android:icon="@drawable/agenda"
+        android:title=" Hadees-e-pak " />
+    <item
+        android:id="@+id/alarm"
+        android:icon="@drawable/alarmclock"
+        android:title=" Hadees Notifier " />
+    <item
+        android:id="@+id/masjid_finder"
+        android:icon="@drawable/mosque"
+        android:title="Masjid Finder" />
+
+</menu>

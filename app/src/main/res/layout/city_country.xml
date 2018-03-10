@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/citycountry"
+    android:layout_marginBottom="61dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#BD7E00"
+    tools:context=".City_country"
+    >
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BD7E00"
+            >
+
+            <com.tomer.fadingtextview.FadingTextView
+                android:id="@+id/Qtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="#FFF"
+                android:fontFamily="cursive"
+                android:textSize="50sp"
+                app:texts="@array/faded"
+
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/line"
+            android:layout_below="@id/top"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/edit_x"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/edit_y"
+            android:textColor="#FFFB8C"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:background="#FFF"
+            android:textAlignment="center"
+            android:ellipsize="middle"
+            android:ems="10"
+            android:fontFamily="cursive"
+            android:hint="city"
+            android:inputType="text"
+            android:text=""
+            android:textSize="25dp"
+            android:theme="@style/Autocomplete">
+
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <AutoCompleteTextView
+            android:id="@+id/edit_y"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="61dp"
+            android:background="#FFF"
+            android:ellipsize="middle"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="country"
+            android:fontFamily="cursive"
+            android:textAlignment="center"
+            android:inputType="text"
+            android:text=""
+            android:textColor="#FFFB8C"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large.Inverse"
+            android:textSize="25dp"
+            android:theme="@style/Autocomplete"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="398dp">
+
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        </RelativeLayout>
+
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/get_The_Results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rippler"
+            android:padding="15dp"
+            android:fontFamily="cursive"
+            android:text="salah timings"
+            android:textColor="#FFF" />
+
+
+    </RelativeLayout>
+
+</ScrollView>
+
+</RelativeLayout>

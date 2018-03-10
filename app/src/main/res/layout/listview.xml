@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:background="#FFF">
+
+    <RelativeLayout
+        android:background="#FFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:id="@+id/Heading"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="20dp"
+            />
+
+
+        <TextView
+            android:id="@+id/Hadees"
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Heading"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="5dp"
+
+            />
+
+        <com.airbnb.lottie.LottieAnimationView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:elevation="12dp"
+            android:visibility="gone"
+            android:id="@+id/tag"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>
