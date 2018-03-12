@@ -63,6 +63,7 @@ public class City_country extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
         initialise(view);
+        displayDatabaseInfo();
         buttonresults(view);
     }
 
@@ -75,86 +76,16 @@ public class City_country extends Fragment {
             public void onClick(View view) {
 
 
-                startplayer(view);
-
-                try {
+                    startplayer(view);
 
                     String x = ac.getText().toString().trim();
                     String y = ac1.getText().toString().trim();
 
-
-
-                    SQLiteDatabase db = city_country_store.getReadableDatabase();
-
-                    String[] project = {PetsContract.PetEntry._ID, PetsContract.PetEntry.COLUMN_City, PetsContract.PetEntry.COLUMN_Country};
-
-                    Cursor cursor = db.query(
-                            PetsContract.PetEntry.TABLE_NAME,
-                            project,
-                            null,
-                            null,
-                            null,
-                            null,
-                            null
-                    );
-
-
-                    try {
-
-                        String currenName = "";
-                        String currenBreed = "";
-
-                        int colounName = cursor.getColumnIndex(PetsContract.PetEntry.COLUMN_City);
-                        int columnBreed = cursor.getColumnIndex(PetsContract.PetEntry.COLUMN_Country);
-
-                        while (cursor.moveToNext()) {
-
-                            currenName = cursor.getString(colounName);
-                            currenBreed = cursor.getString(columnBreed);
-
-                            if (currenName.equals(x) && currenBreed.equals(y)) {
-
-                                dontSetup(x, y);
-                                has = true;
-                                break;
-                            }
-                            if (currenName.equals(x) && currenBreed.equals("dont")) {
-
-                                dontSetup(x, y);
-                                has = true;
-                                break;
-                            }
-                            if (currenName.equals("dont") && currenBreed.equals(y)) {
-
-                                dontSetup(x, y);
-                                has = true;
-                                break;
-                            }
-
-                        }
-
-                        if (has == false) {
-
-                            if (currenName.equals(x) && !currenBreed.equals(y)) {
-                                setupY(x, y);
-                            } else if (!currenName.equals(x) && currenBreed.equals(y)) {
-                                setupX(x, y);
-                            } else if(!currenName.equals(x) && !currenBreed.equals(y)){
-                                goSetup(x, y);
-                            }
-
-                        }
-
-                    }
-                    finally {
-                        cursor.close();
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences("Email", getActivity().MODE_PRIVATE).edit();
+                editor.putString("country", x);
+                editor.putString("city",y);
+                editor.apply();
+                    gotoSalahTimer(x,y);
 
             }
 
@@ -167,21 +98,6 @@ public class City_country extends Fragment {
 
         final MediaPlayer mp = MediaPlayer.create(getActivity() ,R.raw.tweet);
         mp.start();
-    }
-
-
-    private void setupX(String x, String y) {
-
-        if (x.length()>=2&&y.length()>=2)
-        {
-            TastyToast.makeText(getActivity(),"Fetching Data ...",Toast.LENGTH_LONG,TastyToast.SUCCESS).show();
-            insertData(x,"dont");
-            gotoSalahTimer(x,y);
-        }
-        else {
-            TastyToast.makeText(getActivity(), "Enter the City and Country", Toast.LENGTH_LONG ,TastyToast.CONFUSING).show();
-            setVibrator();
-        }
     }
 
     private void setVibrator() {
@@ -221,123 +137,14 @@ public class City_country extends Fragment {
 
     }
 
-    private void setupY(String x, String y) {
 
-        if (x.length()>=2&&y.length()>=2)
-        {
-            TastyToast.makeText(getActivity(),"Fetching Data ...",Toast.LENGTH_LONG,TastyToast.SUCCESS).show();
-            insertData("dont",y);
-            gotoSalahTimer(x,y);
-        }
-        else {
-            TastyToast.makeText(getActivity(), "Enter the City and Country", Toast.LENGTH_LONG,TastyToast.CONFUSING).show();
-           setVibrator();
-        }
-    }
-
-    private void goSetup(String x, String y) {
-
-        if (x.length()>=2&&y.length()>=2)
-        {
-            TastyToast.makeText(getActivity(),"Fetching Data ...",Toast.LENGTH_LONG,TastyToast.SUCCESS).show();
-            insertData(x,y);
-            gotoSalahTimer(x,y);
-        }
-        else {
-            TastyToast.makeText(getActivity(), "Enter the City and Country", Toast.LENGTH_LONG,TastyToast.CONFUSING).show();
-          setVibrator();
-        }
-    }
-
-    private void dontSetup(String x ,String y) {
-
-        if (x.length()>=2&&y.length()>=2)
-        {
-            TastyToast.makeText(getActivity(), "Fectching Data ...", Toast.LENGTH_LONG,TastyToast.SUCCESS).show();
-           gotoSalahTimer(x,y);
-        }
-        else {
-            TastyToast.makeText(getActivity(), "Enter the City and Country", Toast.LENGTH_LONG,TastyToast.CONFUSING).show();
-
-            setVibrator();
-
-        }
-    }
     private void displayDatabaseInfo() {
 
-        SQLiteDatabase db = city_country_store.getReadableDatabase();
-
-        String []project = {PetsContract.PetEntry._ID, PetsContract.PetEntry.COLUMN_City, PetsContract.PetEntry.COLUMN_Country};
-
-        Cursor cursor = db.query(
-                PetsContract.PetEntry.TABLE_NAME,
-                project,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
-
-
-        try {
-
-            int colounName = cursor.getColumnIndex(PetsContract.PetEntry.COLUMN_City);
-            int columnBreed = cursor.getColumnIndex(PetsContract.PetEntry.COLUMN_Country);
-            while(cursor.moveToNext())
-            {
-
-                String currenName = cursor.getString(colounName);
-                String currenBreed = cursor.getString(columnBreed);
-
-                arrayList.add(currenName);
-                arrayList1.add(currenBreed);
-            }
-        } finally {
-            cursor.close();
-        }
-
-    }
-
-    private void insertData(String x ,String y) {
-
-        SQLiteDatabase sqldb =city_country_store.getWritableDatabase();
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        int i1 = preferences.getInt("int",1);
-
-
-        if(i1==1) {
-
-            ContentValues values = new ContentValues();
-            values.put(PetsContract.PetEntry.COLUMN_City, "");
-            values.put(PetsContract.PetEntry.COLUMN_Country, "");
-
-
-            SharedPreferences prefs =
-                    PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-            SharedPreferences.Editor editor = prefs.edit();
-
-            editor.putInt("int", 2);
-
-            editor.commit();
-
-            long newRowId = sqldb.insert(PetsContract.PetEntry.TABLE_NAME, null, values);
-            Log.v("","" +newRowId);
-
-        }
-        else
-        {
-
-            ContentValues values = new ContentValues();
-            values.put(PetsContract.PetEntry.COLUMN_City, x);
-            values.put(PetsContract.PetEntry.COLUMN_Country, y);
-
-            long newRowId = sqldb.insert(PetsContract.PetEntry.TABLE_NAME, null, values);
-            Log.v("","" +newRowId);
-
-        }
+        SharedPreferences getShare = getActivity().getSharedPreferences("Email",getActivity().MODE_PRIVATE);
+        String country = getShare.getString("country","Country");
+        String city    = getShare.getString("city","city");
+                arrayList.add(country);
+                arrayList1.add(city);
     }
 
     private void initialise(View view) {
@@ -347,33 +154,9 @@ public class City_country extends Fragment {
 
 
 
-        city_country_store = new City_Country_store(getActivity());
-
         arrayList = new ArrayList<String>();
         arrayList1 = new ArrayList<String>();
 
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        int i1 = preferences.getInt("int",1);
-
-        if(i1 == 1)
-        {
-
-            insertData( "" ,"");
-            SharedPreferences prefs =
-                    PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-            SharedPreferences.Editor editor = prefs.edit();
-
-            editor.putInt("int", 2);
-
-            editor.commit();
-
-
-        }
-        else {
-            displayDatabaseInfo();
-        }
 
         int i =1 ;
 

@@ -48,7 +48,7 @@ public class Notifier extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
         initialiser(view);
 
@@ -68,8 +68,7 @@ public class Notifier extends Fragment {
                 setVibrator();
 
                 Calendar cl = Calendar.getInstance();
-
-                if(Build.VERSION.SDK_INT >= 23) {
+                   if(Build.VERSION.SDK_INT >= 23) {
                     cl.set(
                             cl.get(Calendar.YEAR),
                             cl.get(Calendar.MONTH),
@@ -94,9 +93,6 @@ public class Notifier extends Fragment {
                     );
 
                 }
-
-
-
                 setAlarm(cl.getTimeInMillis() ,view);
             }
         });
@@ -114,7 +110,7 @@ public class Notifier extends Fragment {
         PendingIntent pi = PendingIntent.getBroadcast(getActivity() ,0 ,i ,0);
 
 
-        al.setRepeating(AlarmManager.RTC_WAKEUP ,timeInMillis -1000, 86400000 , pi);
+        al.setRepeating(AlarmManager.RTC_WAKEUP ,timeInMillis, /*86400000*/ 2000, pi);
 
         TastyToast.makeText(getActivity(),"Notification has set",Toast.LENGTH_LONG,TastyToast.SUCCESS).show();
     }

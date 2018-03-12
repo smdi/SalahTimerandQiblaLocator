@@ -2,10 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/notifier"
-    android:layout_marginBottom="61dp"
     android:layout_height="match_parent"
-    android:background="#FBEBCB"
+    android:background="#000"
+    android:layout_marginBottom="61dp"
     >
+    <ImageView
+        android:alpha=".1"
+        android:background="#000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+<RelativeLayout
+    android:layout_marginTop="40dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:elevation="20dp"
+    android:background="#ffff"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -36,7 +52,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:id="@+id/butonnsetNotification"
-                android:text="set notification Time"
+                android:text="Notify Hadees"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large.Inverse"
                 android:background="@drawable/reverserip"
                 />
@@ -47,4 +63,5 @@
             </RelativeLayout>
 
 </ScrollView>
+</RelativeLayout>
 </RelativeLayout>

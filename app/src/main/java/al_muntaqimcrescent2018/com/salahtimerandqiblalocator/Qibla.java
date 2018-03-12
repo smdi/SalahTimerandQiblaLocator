@@ -20,10 +20,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -64,14 +66,12 @@ public class Qibla extends Fragment {
             e.printStackTrace();
         }
 
-//            ((MainActivity)getActivity()).setActionBarTitle("Qibla Locator");
+
 
             url =  "https://qiblafinder.withgoogle.com/intl/en/finder/ar";
 
-
-
         progressBar = (ProgressBar) view.findViewById(R.id.qiblaprog);
-        progressBar.setProgress(100);
+//        progressBar.setProgress(100);
         progressBar.setIndeterminateTintList(ColorStateList.valueOf(Color.CYAN));
         cimg = (CircleImageView) view.findViewById(R.id.CircularImageOntop);
         cimg.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +81,10 @@ public class Qibla extends Fragment {
             }
         });
 
+
+
         webView = (WebView) view.findViewById(R.id.webViewinActivity);
+//        getWebFast();
         webView.setWebViewClient(new MyClient());
         webView.getSettings().setJavaScriptEnabled(true);
 //        webView.getSettings().setBuiltInZoomControls(true);
@@ -123,6 +126,37 @@ public class Qibla extends Fragment {
 
         }
     }
+//
+//    public void getWebFast() {
+//
+//        WebSettings webSettings = webView.getSettings();
+//
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.loadUrl(url);
+////        webView.getSettings().setBuiltInZoomControls(false);
+//        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+//        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+//        webView.getSettings().setAppCacheEnabled(true);
+////        webView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
+////        webView.setScrollbarFadingEnabled(true);
+//        webView.getSettings().setDomStorageEnabled(true);
+//        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+//        webSettings.getUseWideViewPort();
+//        webSettings.setLoadWithOverviewMode(true) ;
+//        webSettings.setUseWideViewPort(true);
+//        webSettings.setSupportZoom(true);
+//        webSettings.getSaveFormData();
+//        webSettings.setEnableSmoothTransition(true);
+////        webView.getSettings().setJavaScriptEnabled(true);
+////        webView.getSettings().setBuiltInZoomControls(true);
+//        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT) {
+//            webView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
+//        }
+//        else{
+//            webView.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
+//        }
+//    }
+
     private class MyClient extends WebViewClient {
 
         @Override
@@ -132,5 +166,6 @@ public class Qibla extends Fragment {
             return true;
         }
     }
+
 
 }

@@ -38,8 +38,6 @@ public class AlarmClass extends BroadcastReceiver {
 //        v.vibrate(1000);
 
 
-        apllicationContext = MainActivity.getContextOfApplication();
-
      try {
 
           mp = MediaPlayer.create(context, R.raw.message_bell_s8);
@@ -66,7 +64,7 @@ public class AlarmClass extends BroadcastReceiver {
 
         ctx = context;
 
-        Intent i1 = new Intent(context, MainActivity.class);
+        Intent i1 = new Intent(context, Bottom.class);
         PendingIntent pi1 = PendingIntent.getActivity(context, 1, i1, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),R.drawable.mosquenotif);
